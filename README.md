@@ -1,4 +1,5 @@
 # GenGraph
+![Graph Example](./public/Screenshots/example.png)
 
 GenGraph is a versatile utility designed to help visualize linear equations of the form \( ax + by = c \). This tool is ideal for students, educators, and anyone who needs to graphically represent linear equations quickly and easily.
 
