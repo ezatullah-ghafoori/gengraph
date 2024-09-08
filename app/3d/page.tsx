@@ -1,32 +1,40 @@
 "use client";
 // app/page.tsx
 import React, { useState } from "react";
-import Graph from "../components/Graph";
-import EquationInput from "../components/EquationInput";
-import { parseEquation } from "../utils/parseEquation";
+import { parseEquation3d } from "@/utils/parseEquation";
 import { ResizableBox } from "react-resizable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faLeftRight,
 	faGripVertical,
-	faCubes,
+	faLineChart,
 } from "@fortawesome/free-solid-svg-icons";
+import EquationInput3d from "@/components/EquationInput3d";
+import Graph3d from "@/components/Graph3d";
 import Link from "next/link";
 
 const HomePage: React.FC = () => {
 	const [equations, setEquations] = useState<
-		{ a: number; b: number; c: number; title: string; color?: string }[]
+		{
+			a: number;
+			b: number;
+			c: number;
+			d: number;
+			title: string;
+			color?: string;
+		}[]
 	>([]);
 
 	const addEquation = (equation: string) => {
 		try {
-			const { a, b, c } = parseEquation(equation);
+			const { a, b, c, d } = parseEquation3d(equation);
 			setEquations([
 				...equations,
 				{
 					a,
 					b,
 					c,
+					d,
 					title: equation,
 					color: Math.random().toString(16).slice(-6),
 				},
@@ -44,9 +52,9 @@ const HomePage: React.FC = () => {
 
 	const onModify = (index: number, equation: string, color: string) => {
 		try {
-			const { a, b, c } = parseEquation(equation);
+			const { a, b, c, d } = parseEquation3d(equation);
 			const newEquations = [...equations];
-			newEquations[index] = { a, b, c, title: equation, color: color };
+			newEquations[index] = { a, b, c, d, title: equation, color: color };
 			setEquations(newEquations);
 		} catch (error) {
 			console.log(error);
@@ -69,13 +77,13 @@ const HomePage: React.FC = () => {
 						</div>
 					}>
 					<div className="w-full h-full p-4">
-						<div className="flex items-center justify-between">
+						<div className="flex justify-between items-center">
 							<h1 className="text-2xl font-bold text-blue-900">
 								<span className="text-red-700 text-[3rem]">Gen</span>Graph
 							</h1>
-							<Link href={"/3d"}>
+							<Link href={"/"}>
 								<FontAwesomeIcon
-									icon={faCubes}
+									icon={faLineChart}
 									className="text-gray-500"
 								/>
 							</Link>
@@ -83,7 +91,7 @@ const HomePage: React.FC = () => {
 
 						{equations.map((eq, index) => {
 							return (
-								<EquationInput
+								<EquationInput3d
 									onAddEquation={addEquation}
 									oldColor={eq.color}
 									onModify={onModify}
@@ -95,7 +103,7 @@ const HomePage: React.FC = () => {
 							);
 						})}
 
-						<EquationInput
+						<EquationInput3d
 							onAddEquation={addEquation}
 							onModify={onModify}
 							eq={""}
@@ -103,7 +111,7 @@ const HomePage: React.FC = () => {
 					</div>
 				</ResizableBox>
 				<div className="w-full h-full grid place-content-center">
-					<Graph equations={equations} />
+					<Graph3d equations={equations} />
 				</div>
 			</div>
 			<h1>Developed By: Ezatullah Ghafoori</h1>
