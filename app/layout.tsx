@@ -33,9 +33,9 @@ export default function RootLayout({
             return <SidebarItem title={btn.title} key={index} className={btn.className} icon={btn.icon} link={btn.link} />
           })}
         </Sidebar>
-        <h1 className="text-red-600 text-3xl font-bold text-center mt-36">We Are Sorry!!</h1>
-        <p className="text-red-600 font-bold text-center mt-4 mx-4">Currently we don&apos;t have support for mobile version please try it with laptop and computer!!</p>
-        <p className="text-green-600 font-bold text-center mt-4">Mobile Version is comming soon!!</p>
+        <h1 className="text-red-600 text-3xl font-bold text-center mt-36 md:hidden">We Are Sorry!!</h1>
+        <p className="text-red-600 font-bold text-center mt-4 mx-4 md:hidden">Currently we don&apos;t have support for mobile version please try it with laptop and computer!!</p>
+        <p className="text-green-600 font-bold text-center mt-4 md:hidden">Mobile Version is comming soon!!</p>
         <main className="ml-16 hidden md:block">
           {children}
         </main>
