@@ -25,14 +25,18 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <body className={inter.className + " flex h-[130vh] overflow-x-hidden w-screen"}>
+      <body className={inter.className + " md:flex md:h-[130vh] overflow-x-hidden md:w-screen"}>
         <ToastContainer />
+
         <Sidebar>
           {SidebarBtn.map((btn, index) => {
             return <SidebarItem title={btn.title} key={index} className={btn.className} icon={btn.icon} link={btn.link} />
           })}
         </Sidebar>
-        <main className="ml-16">
+        <h1 className="text-red-600 text-3xl font-bold text-center mt-36">We Are Sorry!!</h1>
+        <p className="text-red-600 font-bold text-center mt-4 mx-4">Currently we don't have support for mobile version please try it with laptop and computer!!</p>
+        <p className="text-green-600 font-bold text-center mt-4">Mobile Version is comming soon!!</p>
+        <main className="ml-16 hidden md:block">
           {children}
         </main>
       </body>
