@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/sidebar/Sidebar";
+import { SidebarBtn } from "@/constants/SidebarBtn";
+import SidebarItem from "@/components/sidebar/SidebarItem";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + " flex h-[130vh] overflow-x-hidden w-screen"}>
+        <ToastContainer />
+        <Sidebar>
+          {SidebarBtn.map((btn, index) => {
+            return <SidebarItem title={btn.title} className={btn.className} icon={btn.icon} link={btn.link} />
+          })}
+        </Sidebar>
+        <main className="ml-16">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

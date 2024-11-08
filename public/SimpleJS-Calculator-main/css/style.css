@@ -1,0 +1,146 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+}
+#title{
+    border-right: 0.3px solid;
+    animation: cursorLOpacity 500ms ease-in-out 1000ms infinite;
+    font-family: cursive;
+    font-size: 1rem;
+}
+.Labels{
+    display: flex;
+    gap: 5px;
+}
+#CalculatingLabels{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #334155;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+#userLabel{
+    font-size: 1.6rem;
+    height: 40px;
+}
+#cursor{
+    border-right: 0.3px solid;
+    animation: cursorLOpacity 500ms ease-in-out 1000ms infinite;
+}
+@keyframes cursorLOpacity {
+    50%{
+        border-right: 0px;
+    }
+}
+#subLabel{
+    font-size: 0.7rem;
+    height: 20px;
+}
+.deletionBtnsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 18%;
+}
+.deletionBtnsContainer input{
+    width: 100%;
+    font-size: 0.8rem;
+}
+.btnHolder{
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+.numbericBtnsContainer{
+    width: calc(100% / 2);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    padding: 5px;
+}
+.CalculatingOperationBtnsContainer{
+    width: calc(100% / 2);
+    display: grid;
+    padding: 5px;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+}
+.btns{
+    height: 40px;
+    border: 2px solid #334155;
+    border-radius: 20px;
+    font-size: 20px;
+    background: none;
+    transition: 100ms;
+    font-weight: bold;
+}
+.btns:hover{
+    background: #334155;
+    color: white;
+}
+.btns:focus{
+    outline: none;
+}
+.btns:active{
+    background-color: #3b485b;
+}
+#zero{
+    grid-column: 1/3;
+}
+#equle{
+    grid-column:  2/4;
+}
+.shortcutTips{
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    background-color: rgb(245, 185, 185);
+    height: 150px;
+    border-radius: 20px 0 0 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid orange;
+    transition: 1500ms;
+    overflow-y: scroll;
+}
+.shortcutTips::-webkit-scrollbar{
+    width: 5px;
+    margin: 100px;
+}
+.shortcutTips::-webkit-scrollbar-thumb{
+    border-radius: 15px;
+    background-color: rgba(128, 0, 0, 0.527);
+}
+.tips{
+    background-color: #ffbb00;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+.showTips{
+    right: 0;
+}
+.tip{
+    background-color: #ffbb00;
+    padding: 5px;
+    border-radius: 10px;
+}

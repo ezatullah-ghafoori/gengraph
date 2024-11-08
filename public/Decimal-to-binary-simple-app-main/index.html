@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <br>
+    <h1>THE NUMBER DIGITS CONVERTER</h1>
+    <hr id="HrLine">
+    <div id="MainContainer">
+        <label for="add" id="dicemalLabel">Add dicemal Number in the label below</label>
+        <input type="number" name="add" id="add" oninput="numConverter()" autofocus placeholder="Add Dicemal Number Here!"><br><br>
+        <label id="BinarLabel">Binary: <b id="binary"></b></label><br>
+        <label id="octalLabel">Octal: <b id="octal"></b></label>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>

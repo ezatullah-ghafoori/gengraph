@@ -1,40 +1,32 @@
 "use client";
 // app/page.tsx
 import React, { useState } from "react";
-import { parseEquation3d } from "@/utils/parseEquation";
+import Graph from "../../components/Graph";
+import EquationInput from "../../components/EquationInput";
+import { parseEquation } from "../../utils/parseEquation";
 import { ResizableBox } from "react-resizable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faLeftRight,
 	faGripVertical,
-	faLineChart,
+	faCubes,
 } from "@fortawesome/free-solid-svg-icons";
-import EquationInput3d from "@/components/EquationInput3d";
-import Graph3d from "@/components/Graph3d";
 import Link from "next/link";
 
 const HomePage: React.FC = () => {
 	const [equations, setEquations] = useState<
-		{
-			a: number;
-			b: number;
-			c: number;
-			d: number;
-			title: string;
-			color?: string;
-		}[]
+		{ a: number; b: number; c: number; title: string; color?: string }[]
 	>([]);
 
 	const addEquation = (equation: string) => {
 		try {
-			const { a, b, c, d } = parseEquation3d(equation);
+			const { a, b, c } = parseEquation(equation);
 			setEquations([
 				...equations,
 				{
 					a,
 					b,
 					c,
-					d,
 					title: equation,
 					color: Math.random().toString(16).slice(-6),
 				},
@@ -52,9 +44,9 @@ const HomePage: React.FC = () => {
 
 	const onModify = (index: number, equation: string, color: string) => {
 		try {
-			const { a, b, c, d } = parseEquation3d(equation);
+			const { a, b, c } = parseEquation(equation);
 			const newEquations = [...equations];
-			newEquations[index] = { a, b, c, d, title: equation, color: color };
+			newEquations[index] = { a, b, c, title: equation, color: color };
 			setEquations(newEquations);
 		} catch (error) {
 			console.log(error);
@@ -62,14 +54,14 @@ const HomePage: React.FC = () => {
 	};
 
 	return (
-		<div className="w-screen h-screen">
+		<div className="w-full h-screen">
 			<div className="flex w-full h-[96%] items-center justify-center ">
 				<ResizableBox
 					width={500}
 					className="w-full h-full relative"
 					axis={"x"}
 					handle={
-						<div className="w-3 h-full bg-gray-200 absolute left-full top-0 grid place-content-center z-10 cursor-w-resize">
+						<div className="w-3 h-full  absolute left-full top-0 grid place-content-center z-10 cursor-w-resize">
 							<FontAwesomeIcon
 								icon={faGripVertical}
 								className="text-gray-500"
@@ -77,13 +69,13 @@ const HomePage: React.FC = () => {
 						</div>
 					}>
 					<div className="w-full h-full p-4">
-						<div className="flex justify-between items-center">
+						<div className="flex items-center justify-between">
 							<h1 className="text-2xl font-bold text-blue-900">
-								<span className="text-red-700 text-[3rem]">Gen</span>Graph
+								<span className="text-red-700 text-[3rem]">G</span>Graph
 							</h1>
-							<Link href={"/"}>
+							<Link href={"linear-algebra/3d"}>
 								<FontAwesomeIcon
-									icon={faLineChart}
+									icon={faCubes}
 									className="text-gray-500"
 								/>
 							</Link>
@@ -91,7 +83,7 @@ const HomePage: React.FC = () => {
 
 						{equations.map((eq, index) => {
 							return (
-								<EquationInput3d
+								<EquationInput
 									onAddEquation={addEquation}
 									oldColor={eq.color}
 									onModify={onModify}
@@ -103,7 +95,7 @@ const HomePage: React.FC = () => {
 							);
 						})}
 
-						<EquationInput3d
+						<EquationInput
 							onAddEquation={addEquation}
 							onModify={onModify}
 							eq={""}
@@ -111,10 +103,9 @@ const HomePage: React.FC = () => {
 					</div>
 				</ResizableBox>
 				<div className="w-full h-full grid place-content-center">
-					<Graph3d equations={equations} />
+					<Graph equations={equations} />
 				</div>
 			</div>
-			<h1>Developed By: Ezatullah Ghafoori</h1>
 		</div>
 	);
 };

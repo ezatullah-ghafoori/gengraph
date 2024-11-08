@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body onclick="shortcutTips.classList.remove('showTips')">
+    <div class="shortcutTips" id="shortcutTips">
+        <h4><span class="tips">!</span> Shortcut Tips</43> <br><br>
+            <p>
+            <span class="tip">Addition:</span> Shift + (=)key On keybord <br><br>
+            <span class="tip">Substraction:</span> - key On keybord <br><br>
+            <span class="tip">Multiplication:</span> Shift + (6)key On keybord <br><br>
+            <span class="tip">Division:</span> / key On keybord <br><br>
+            <span class="tip">Sqrt:</span> alt + q key On keybord <br><br>
+            <span class="tip">Moduls:</span> Shift + (5)key On keybord <br><br>
+            <span class="tip">sin:</span> s key On keybord <br><br>
+            <span class="tip">cos:</span> c key On keybord <br><br>
+            <span class="tip">tan:</span> t key On keybord <br><br>
+            <span class="tip">Result:</span> Enter or = key On keybord <br><br>
+            <span class="tip">clear:</span> ctrl+Backspace or Delete key on keybord <br><br>
+            <span class="tip">Backspace:</span> Backspace key on keybord <br><br> 
+        </p>
+
+    </div>
+    <main>
+        <p><span id="title">Calculator Devloped By: Ezatullah Ghafoori.</span></p>
+        <div class="Labels">
+            <label id="CalculatingLabels">
+                <label id="subLabel">Start Calculating!</label>
+                <label id="userLabel"><span id="cursor"></span>  </label>
+            </label>
+            <div class="deletionBtnsContainer" id="deletionBtnsContainer">
+                <input class="btns" type="button" id="backspace" value="Backspace">
+                <input class="btns" type="button" id="clear" value="Clear">
+            </div>
+        </div>
+        <div class="btnHolder">
+            <div class="numbericBtnsContainer">
+                <input class="btns" type="button" id="one" value="1">
+                <input class="btns" type="button" id="two" value="2">
+                <input class="btns" type="button" id="three" value="3">
+                <input class="btns" type="button" id="four" value="4">
+                <input class="btns" type="button" id="five" value="5">
+                <input class="btns" type="button" id="six" value="6">
+                <input class="btns" type="button" id="seven" value="7">
+                <input class="btns" type="button" id="eight" value="8">
+                <input class="btns" type="button" id="nine" value="9">
+                <input class="btns" type="button" id="zero" value="0">
+                <input class="btns" type="button" id="dott" value=".">
+            </div>
+            <div class="CalculatingOperationBtnsContainer">
+                <input class="btns" type="button" id="addition" value="+">
+                <input class="btns" type="button" id="Substraction" value="-">
+                <input class="btns" type="button" id="Multiplecation" value="x">
+                <input class="btns" type="button" id="Division" value="/">
+                <input class="btns" type="button" id="moduls" value="%">
+                <input class="btns" type="button" id="power" value="^">
+                <input class="btns" type="button" id="sqrt" value="&Sqrt;">
+                <input class="btns" type="button" id="sin" value="sin">
+                <input class="btns" type="button" id="cos" value="cos">
+                <input class="btns" type="button" id="tan" value="tan">
+                <input class="btns" type="button" id="equle" value="=">
+            </div>
+        </div>
+    </main>
+
+    
+
+    <script src="./js/index.js"></script>
+</body>
+</html>

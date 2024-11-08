@@ -1,114 +1,37 @@
-"use client";
-// app/page.tsx
-import React, { useState } from "react";
-import Graph from "../components/Graph";
-import EquationInput from "../components/EquationInput";
-import { parseEquation } from "../utils/parseEquation";
-import { ResizableBox } from "react-resizable";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faLeftRight,
-	faGripVertical,
-	faCubes,
-} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { SidebarBtn } from '@/constants/SidebarBtn'
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import React from 'react'
 
-const HomePage: React.FC = () => {
-	const [equations, setEquations] = useState<
-		{ a: number; b: number; c: number; title: string; color?: string }[]
-	>([]);
+type Props = {}
 
-	const addEquation = (equation: string) => {
-		try {
-			const { a, b, c } = parseEquation(equation);
-			setEquations([
-				...equations,
-				{
-					a,
-					b,
-					c,
-					title: equation,
-					color: Math.random().toString(16).slice(-6),
-				},
-			]);
-		} catch (error) {
-			console.error("Error parsing equation:", error);
-		}
-	};
+const page = (props: Props) => {
+    return (
+        <div className='flex items-center justify-center text-slate-700 flex-1 flex-col w-[95vw] h-full'>
+            <h1 className='text-[70px]'>g<span className='text-red-600'>Math</span></h1>
+            <p>Speed up your calculation with our excellent tools.</p>
+            <br />
+            <hr className='w-1/2 pt-10' />
+            <h1 className='pb-2 text-2xl'>Our Tools</h1>
+            <hr className='w-1/4 pt-10' />
+            <div className='flex items-center justify-center gap-5'>
+                {
+                    SidebarBtn.map(btn => {
+                        if (btn.title == "Home") return <></>
+                        return <Link href={btn.link} className='shadow-md rounded-md pt-10 flex-1 h-[150px] w-[200px] flex flex-col px-10 group'>
+                            <h1 className='text-center'>{btn.title}</h1>
+                            <div className='flex items-center justify-end mt-5 mb-2 flex-1 w-full opacity-0 group-hover:opacity-100 transition-[200ms] text-blue-800'>
+                                <FontAwesomeIcon icon={faArrowRight} className='text-sm w-[20px] self-end' />
+                            </div>
+                        </Link>
+                    })
+                }
+            </div>
+            <h1 className='mt-20'>Product of <span className='text-2xl text-slate-700'>GhafooriSoft</span></h1>
+        </div>
+    )
+}
 
-	const deleteEquation = (index: number) => {
-		setEquations(equations.filter((_, i) => i !== index));
-	};
-
-	//  modify the equation function onModify as a full string equation
-
-	const onModify = (index: number, equation: string, color: string) => {
-		try {
-			const { a, b, c } = parseEquation(equation);
-			const newEquations = [...equations];
-			newEquations[index] = { a, b, c, title: equation, color: color };
-			setEquations(newEquations);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	return (
-		<div className="w-screen h-screen">
-			<div className="flex w-full h-[96%] items-center justify-center ">
-				<ResizableBox
-					width={500}
-					className="w-full h-full relative"
-					axis={"x"}
-					handle={
-						<div className="w-3 h-full bg-gray-200 absolute left-full top-0 grid place-content-center z-10 cursor-w-resize">
-							<FontAwesomeIcon
-								icon={faGripVertical}
-								className="text-gray-500"
-							/>
-						</div>
-					}>
-					<div className="w-full h-full p-4">
-						<div className="flex items-center justify-between">
-							<h1 className="text-2xl font-bold text-blue-900">
-								<span className="text-red-700 text-[3rem]">Gen</span>Graph
-							</h1>
-							<Link href={"/3d"}>
-								<FontAwesomeIcon
-									icon={faCubes}
-									className="text-gray-500"
-								/>
-							</Link>
-						</div>
-
-						{equations.map((eq, index) => {
-							return (
-								<EquationInput
-									onAddEquation={addEquation}
-									oldColor={eq.color}
-									onModify={onModify}
-									e_index={index}
-									onDeleteEquation={() => deleteEquation(index)}
-									key={index}
-									eq={eq.title}
-								/>
-							);
-						})}
-
-						<EquationInput
-							onAddEquation={addEquation}
-							onModify={onModify}
-							eq={""}
-						/>
-					</div>
-				</ResizableBox>
-				<div className="w-full h-full grid place-content-center">
-					<Graph equations={equations} />
-				</div>
-			</div>
-			<h1>Developed By: Ezatullah Ghafoori</h1>
-		</div>
-	);
-};
-
-export default HomePage;
+export default page
