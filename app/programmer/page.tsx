@@ -1,6 +1,6 @@
 import React from 'react'
 
-const page = () => {
+const Programmer = () => {
   return (
     <div className='w-[95.3vw] flex items-center justify-center flex-col'>
     <iframe
@@ -16,4 +16,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Programmer

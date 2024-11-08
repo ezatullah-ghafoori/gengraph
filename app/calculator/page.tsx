@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const page = (props: Props) => {
+const Calculator = (props: Props) => {
     return (
         <div className='w-[95.3vw] flex items-center justify-center flex-col'>
             <h1 className='mt-20 font-bold text-2xl text-slate-700 '>gMath Standard Calculator</h1>
@@ -19,4 +19,4 @@ const page = (props: Props) => {
     )
 }
 
-export default page
+export default Calculator

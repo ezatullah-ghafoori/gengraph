@@ -10,7 +10,7 @@ const math = create(all);
 
 type Props = {}
 
-const page = (props: Props) => {
+const Matrix = (props: Props) => {
     const [metrix, setMetrix] = useState<number[][]>([
         [0]
     ])
@@ -137,4 +137,4 @@ const page = (props: Props) => {
     )
 }
 
-export default page
+export default Matrix

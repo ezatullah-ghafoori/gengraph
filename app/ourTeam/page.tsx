@@ -41,7 +41,7 @@ const TeamMemberCard = ({ src, fName, lName, jobTitle, whatsapp }: { src: Static
   </div>)
 }
 
-const page = (props: Props) => {
+const OurTeam = (props: Props) => {
   return (
     <div className='flex flex-col items-center h-[180vh] w-[90vw] ms-10 mt-10'>
       <div className='flex flex-col ma-auto w-[60%]'>
@@ -68,4 +68,4 @@ const page = (props: Props) => {
   )
 }
 
-export default page
+export default OurTeam
