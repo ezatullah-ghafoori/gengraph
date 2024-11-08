@@ -34,7 +34,7 @@ export default function RootLayout({
           })}
         </Sidebar>
         <h1 className="text-red-600 text-3xl font-bold text-center mt-36">We Are Sorry!!</h1>
-        <p className="text-red-600 font-bold text-center mt-4 mx-4">Currently we don't have support for mobile version please try it with laptop and computer!!</p>
+        <p className="text-red-600 font-bold text-center mt-4 mx-4">Currently we don&apos;t have support for mobile version please try it with laptop and computer!!</p>
         <p className="text-green-600 font-bold text-center mt-4">Mobile Version is comming soon!!</p>
         <main className="ml-16 hidden md:block">
           {children}
